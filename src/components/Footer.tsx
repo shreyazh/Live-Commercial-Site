@@ -64,7 +64,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3 text-slate-400">
                 <Phone className="w-5 h-5 text-cyan-400" />
-                <span>+917073155611</span>
+                <span>+918460135272</span>
               </li>
               <li className="flex items-center gap-3 text-slate-400">
                 <MapPin className="w-5 h-5 text-cyan-400" />
