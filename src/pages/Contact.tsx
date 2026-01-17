@@ -48,7 +48,7 @@ export const Contact: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-900/60">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="pt-12 px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-blue-600/10 to-purple-600/10 border border-blue-500/30 rounded-lg p-6 sm:p-8 lg:p-12 hover:border-blue-500/50 transition-all">
         <div className="max-w-7xl mx-auto text-center">
@@ -186,7 +186,7 @@ export const Contact: React.FC = () => {
       </section>
 
       {/* Global Offices */}
-      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 bg-slate-800/30">
+      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 bg-slate-800/30 bg-slate-900/60">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 text-center">Visit One of Our Global Offices</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mt-8">
@@ -208,7 +208,7 @@ export const Contact: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 bg-black-700">
         <div className="max-w-4xl mx-auto text-center bg-gradient-to-r from-blue-600/10 to-purple-600/10 border border-blue-500/30 rounded-lg p-6 sm:p-8 lg:p-12 hover:border-blue-500/50 transition-all">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">Let's Build Success Together</h2>
           <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed">

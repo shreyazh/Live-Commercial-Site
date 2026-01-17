@@ -88,7 +88,7 @@ export function Footer() {
 
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-400 text-sm">
-            © 2025 MAKS Solutions. All rights reserved.
+            © 2026 MAKS Solutions. All rights reserved.
           </p>
           {/* <div className="flex gap-6">
             <a href="#" className="text-slate-400 hover:text-cyan-400 text-sm transition-colors">Privacy Policy</a>
