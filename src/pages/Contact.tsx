@@ -62,9 +62,9 @@ export const Contact: React.FC = () => {
       </section>
 
       {/* Main Contact Section */}
-      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
-          {/* Contact Form */}
+      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 bg-slate-900/60">
+        {/* <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
+          Contact Form
           <div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 lg:mb-8">Contact MAKS Solutions</h2>
             <p className="text-sm sm:text-base lg:text-lg text-slate-300 mb-6 sm:mb-8 leading-relaxed">
@@ -139,11 +139,11 @@ export const Contact: React.FC = () => {
                 </div>
               )}
             </form>
-          </div>
+          </div> */}
 
           {/* Contact Info */}
           <div className="space-y-6 sm:space-y-8">
-            <div>
+            <div className="max-w-sm mx-auto">
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 sm:mb-6">What to Expect</h3>
               <div className="space-y-3 sm:space-y-4">
                 {expectations.map((exp, index) => (
@@ -155,7 +155,7 @@ export const Contact: React.FC = () => {
               </div>
             </div>
 
-            <div>
+            <div className='pt-12 max-w-sm mx-auto bg-slate-900/60'>
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 sm:mb-6">Get in Touch</h3>
               <div className="space-y-3 sm:space-y-4">
                 <div className="group bg-slate-800/50 border border-slate-700 rounded-lg p-4 sm:p-6 flex items-start gap-3 sm:gap-4 hover:border-blue-500/80 hover:bg-slate-800/80 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/10 duration-300">
@@ -182,11 +182,11 @@ export const Contact: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+       
       </section>
 
       {/* Global Offices */}
-      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 bg-slate-800/30 bg-slate-900/60">
+      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 bg-slate-800/30">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 text-center">Visit One of Our Global Offices</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mt-8">
@@ -208,7 +208,7 @@ export const Contact: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 bg-black-700">
+      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 bg-slate-900/60">
         <div className="max-w-4xl mx-auto text-center bg-gradient-to-r from-blue-600/10 to-purple-600/10 border border-blue-500/30 rounded-lg p-6 sm:p-8 lg:p-12 hover:border-blue-500/50 transition-all">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">Let's Build Success Together</h2>
           <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed">
