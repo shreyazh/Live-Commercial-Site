@@ -20,9 +20,9 @@ export const Navigation: React.FC = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            {/* <div className="w-8 h-8 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">MS</span>
-            </div> */}
+            </div>
             <span className="hidden sm:block text-white font-bold text-xl group-hover:text-cyan-400 transition-colors">
               MAKS Solutions
             </span>
