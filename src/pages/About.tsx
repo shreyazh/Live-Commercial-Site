@@ -49,7 +49,7 @@ export const About: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-8">Company Background</h2>
           <div className="space-y-4 sm:space-y-6">
             <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed">
-              In market since 2021, MAKS Solutions was created to meet the growing demand for skilled IT professionals and strategic staffing solutions. As technology and workforce needs evolved, so did we—expanding our expertise while staying true to personalized service and long-term partnerships.
+              In market since 2021, MAKS Solutions was created to meet the growing demand for skilled IT professionals and strategic staffing solutions. As technology and workforce needs evolved, so did we by expanding our expertise while staying true to personalized service and long-term partnerships.
             </p>
             <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed">
               Our guiding belief remains the same: the right talent in the right role creates lasting impact for businesses and fulfilling careers for professionals.
