@@ -131,7 +131,11 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3 text-slate-400">
                 <Phone className="w-5 h-5 text-cyan-400" />
-                <span>+918460135272</span>
+                <span><a
+                        href="tel:+918460135272" className="hover:text-cyan-400 transition-colors"
+                      >
+                        +91 8460135272
+                      </a></span>
               </li>
               <li className="flex items-center gap-3 text-slate-400">
                 <MapPin className="w-5 h-5 text-cyan-400" />
@@ -155,7 +159,7 @@ export function Footer() {
 
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-400 text-sm">
-            © 2025 MAKS Solutions. All rights reserved.
+            © 2026 MAKS Solutions. All rights reserved.
           </p>
           {/* <div className="flex gap-6">
             <a href="#" className="text-slate-400 hover:text-cyan-400 text-sm transition-colors">Privacy Policy</a>

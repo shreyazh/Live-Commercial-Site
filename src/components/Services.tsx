@@ -64,10 +64,10 @@ export function Services() {
                 {service.description}
               </p>
 
-              <div className="mt-6 flex items-center text-cyan-400 font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              {/* <div className="mt-6 flex items-center text-cyan-400 font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 Learn more
                 <span className="ml-2 group-hover:translate-x-1 transition-transform inline-block">→</span>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

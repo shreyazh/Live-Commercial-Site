@@ -13,7 +13,7 @@ export function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="space-y-8 animate-fadeIn">
-          <br/>
+          <br/><br/>
           <div className="inline-flex items-center gap-3 px-6 py-3 bg-slate-800/50 backdrop-blur-sm rounded-full border border-slate-700 mb-6">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
             <span className="text-slate-300 text-sm font-medium">Empowering Businesses Worldwide</span>
