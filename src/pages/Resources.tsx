@@ -141,7 +141,7 @@ export function Resources() {
               Refer a skilled professional or a business in need of talent. Together, we'll help them take the next step toward success.
             </p>
             <a
-              href="mailto:makssolutionsorg@gmail.com?subject=Referral Inquiry"
+              href="mailto:info@makssolutions.org?subject=Referral Inquiry"
               className="inline-block px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105"
             >
               Make a Referral

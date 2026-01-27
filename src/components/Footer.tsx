@@ -125,8 +125,8 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-slate-400">
                 <Mail className="w-5 h-5 text-cyan-400" />
-                <a href="mailto:makssolutionsorg@gmail.com" className="hover:text-cyan-400 transition-colors">
-                  makssolutionsorg@gmail.com
+                <a href="mailto:info@makssolutions.org" className="hover:text-cyan-400 transition-colors">
+                  info@makssolutions.org
                 </a>
               </li>
               <li className="flex items-center gap-3 text-slate-400">

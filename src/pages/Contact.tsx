@@ -167,10 +167,10 @@ export function Contact() {
                     <div>
                       <h4 className="text-white font-semibold mb-1">Email</h4>
                       <a
-                        href="mailto:makssolutionsorg@gmail.com"
+                        href="mailto:info@makssolutions.org"
                         className="text-cyan-400 hover:text-cyan-300 transition-colors"
                       >
-                        makssolutionsorg@gmail.com
+                        info@makssolutions.org
                       </a>
                     </div>
                   </div>
