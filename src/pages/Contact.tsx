@@ -103,7 +103,7 @@ export function Contact() {
                   Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Maks Solutions</span>
                 </h2>
                 <p className="text-slate-400 text-lg">
-                  Connect with our team to learn how we can support your business or career goals.
+                  Connect with our team to learn how we can support your business or career.
                 </p>
               </div>
 
