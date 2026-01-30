@@ -1,6 +1,72 @@
-import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { useState } from 'react';
 
 export function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
+  });
+
+  const [status, setStatus] = useState({
+    submitting: false,
+    submitted: false,
+    error: null
+  });
+
+  // Replace this with your actual Google Apps Script URL
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwySVVyCn4KUWSU2k7UNnJ7eExaGgQfq_6GQYC6KImYAWDuF13sB9-dSUagjwOzay_5/exec';
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ submitting: true, submitted: false, error: null });
+
+    try {
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      // Note: With no-cors mode, we can't read the response
+      // We'll assume success if no error is thrown
+      setStatus({ submitting: false, submitted: true, error: null });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+      });
+
+      // Clear success message after 5 seconds
+      setTimeout(() => {
+        setStatus({ submitting: false, submitted: false, error: null });
+      }, 5000);
+
+    } catch (error) {
+      setStatus({
+        submitting: false,
+        submitted: false,
+        error: 'Failed to submit form. Please try again.'
+      });
+    }
+  };
+
   return (
     <div className="pt-20">
       {/* Hero Section */}
@@ -41,7 +107,23 @@ export function Contact() {
                 </p>
               </div>
 
-              <form className="space-y-6">
+              {/* Success Message */}
+              {status.submitted && (
+                <div className="mb-6 p-4 bg-green-900/30 border border-green-500/50 rounded-lg flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                  <p className="text-green-300">Thank you! Your message has been sent successfully.</p>
+                </div>
+              )}
+
+              {/* Error Message */}
+              {status.error && (
+                <div className="mb-6 p-4 bg-red-900/30 border border-red-500/50 rounded-lg flex items-center gap-3">
+                  <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
+                  <p className="text-red-300">{status.error}</p>
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-slate-300 font-medium mb-2">
                     Name
@@ -51,7 +133,10 @@ export function Contact() {
                     id="name"
                     name="name"
                     required
-                    className="w-full px-6 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
+                    value={formData.name}
+                    onChange={handleChange}
+                    disabled={status.submitting}
+                    className="w-full px-6 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="Your name"
                   />
                 </div>
@@ -65,7 +150,10 @@ export function Contact() {
                     id="email"
                     name="email"
                     required
-                    className="w-full px-6 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
+                    value={formData.email}
+                    onChange={handleChange}
+                    disabled={status.submitting}
+                    className="w-full px-6 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -78,7 +166,10 @@ export function Contact() {
                     type="tel"
                     id="phone"
                     name="phone"
-                    className="w-full px-6 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    disabled={status.submitting}
+                    className="w-full px-6 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="+1 (555) 123-4567"
                   />
                 </div>
@@ -91,7 +182,10 @@ export function Contact() {
                     id="subject"
                     name="subject"
                     required
-                    className="w-full px-6 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-cyan-400 transition-colors"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    disabled={status.submitting}
+                    className="w-full px-6 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-cyan-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <option value="">Select a topic</option>
                     <option value="talent">Looking for Talent</option>
@@ -110,55 +204,37 @@ export function Contact() {
                     name="message"
                     rows={6}
                     required
-                    className="w-full px-6 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors resize-none"
+                    value={formData.message}
+                    onChange={handleChange}
+                    disabled={status.submitting}
+                    className="w-full px-6 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="Tell us how we can help..."
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+                  disabled={status.submitting}
+                  className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
-                  <Send className="w-5 h-5" />
-                  Send Message
+                  {status.submitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Send Message
+                    </>
+                  )}
                 </button>
               </form>
             </div>
-
             {/* Contact Information */}
             <div>
-              <div className="mb-8">
-                <span className="text-cyan-400 font-semibold text-sm uppercase tracking-wider">What to Expect</span>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mt-4 mb-6">
-                  Quick <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Response</span>
-                </h2>
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-start gap-4 p-4 bg-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-700">
-                    <MessageSquare className="w-6 h-6 text-cyan-400 flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="text-white font-semibold mb-1">A prompt response</h3>
-                      <p className="text-slate-400 text-sm">from a Maks Solutions specialist</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4 p-4 bg-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-700">
-                    <MessageSquare className="w-6 h-6 text-cyan-400 flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="text-white font-semibold mb-1">Personalized guidance</h3>
-                      <p className="text-slate-400 text-sm">based on your needs</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4 p-4 bg-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-700">
-                    <MessageSquare className="w-6 h-6 text-cyan-400 flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="text-white font-semibold mb-1">Clear next steps</h3>
-                      <p className="text-slate-400 text-sm">and actionable insights</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               <div className="p-8 bg-slate-800/40 backdrop-blur-sm rounded-2xl border border-slate-700">
-                <h3 className="text-2xl font-bold text-white mb-6">Get in Touch</h3>
+                <h3 className="text-2xl font-bold text-white mb-6">In United States</h3>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -197,7 +273,54 @@ export function Contact() {
                     <div>
                       <h4 className="text-white font-semibold mb-1">Location</h4>
                       <p className="text-slate-400">
-                        Rajastan, India
+                        Kingston, Rhode Island, USA
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br/>
+              <div className="p-8 bg-slate-800/40 backdrop-blur-sm rounded-2xl border border-slate-700">
+                <h3 className="text-2xl font-bold text-white mb-6">In India</h3>
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-semibold mb-1">Email</h4>
+                      <a
+                        href="mailto:info@makssolutions.org"
+                        className="text-cyan-400 hover:text-cyan-300 transition-colors"
+                      >
+                        info@makssolutions.org
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-semibold mb-1">Phone</h4>
+                      <a
+                        href="tel:+14012693358"
+                        className="text-cyan-400 hover:text-cyan-300 transition-colors"
+                      >
+                        (+1) 401-269-3358
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-semibold mb-1">Location</h4>
+                      <p className="text-slate-400">
+                        Udaipur, Rajastan, India
                       </p>
                     </div>
                   </div>
@@ -205,7 +328,7 @@ export function Contact() {
 
                 <div className="mt-8 pt-8 border-t border-slate-700">
                   <p className="text-slate-400 text-center italic">
-                    Let's build success together - one connection at a time.
+                    Let's build success together!
                   </p>
                 </div>
               </div>

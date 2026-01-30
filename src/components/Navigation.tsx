@@ -12,7 +12,7 @@ export function Navigation() {
     { path: '/for-candidates', label: 'For Candidates' },
     { path: '/about', label: 'About Us' },
     { path: '/resources', label: 'Resources' },
-    // { path: '/contact', label: 'Contact' },
+    { path: '/contact', label: 'Contact' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
